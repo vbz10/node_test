@@ -1,31 +1,26 @@
-/*function saludar(nombre: string): string {
-  return `Hola, ${nombre}!`;
-}
-
-const mensaje = saludar("Mundo");
-console.log(mensaje);
-
-// Nueva función añadida
-function sumar(a: number, b: number): number {
-  return a + b;
-}
-
-const resultado = sumar(5, 3);
-console.log(`La suma de 5 y 3 es: ${resultado}`);*/
-
 import * as express from 'express';
-
 const app = express();
 
-app.get('/login', (req, res) => {
-  // Simulando una vulnerabilidad al almacenar la contraseña en texto plano
-  const password = req.query.password;
-  console.log(`Contraseña ingresada: ${password}`);
+// Ejemplo 1: Uso de eval (no recomendado)
+app.get('/eval-example', (req, res) => {
+  const user_input = req.query.input;
+  eval(user_input); // Evita esto en aplicaciones del mundo real
+  res.send('Evaluación completa');
+});
 
-  // Aquí debería haber lógica para comparar y verificar la contraseña (esto es solo para el ejemplo)
-  // Nunca deberías almacenar contraseñas en texto plano en un entorno de producción
+// Ejemplo 2: Uso de exec en child_process (no recomendado)
+app.get('/exec-example', (req, res) => {
+  const command = req.query.command;
+  const { exec } = require('child_process');
+  exec(command); // Evita ejecutar comandos no validados
+  res.send('Comando ejecutado');
+});
 
-  res.send('¡Login exitoso!');
+// Ejemplo 3: Concatenación de rutas insegura (no recomendado)
+app.get('/path-concat-example', (req, res) => {
+  const user_input = req.query.filename;
+  const filePath = '/uploads/' + user_input; // Evita esto y valida las rutas de archivo
+  res.send('Ruta de archivo concatenada');
 });
 
 const PORT = process.env.PORT || 3000;
