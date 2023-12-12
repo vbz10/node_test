@@ -6,9 +6,9 @@ const mensaje = saludar("Mundo");
 console.log(mensaje);
 
 // Nueva función añadida
-function sumar(a: number, b: number): number {
+/*function sumar(a: number, b: number): number {
   return a + b;
 }
 
 const resultado = sumar(5, 3);
-console.log(`La suma de 5 y 3 es: ${resultado}`);
+console.log(`La suma de 5 y 3 es: ${resultado}`);/*
