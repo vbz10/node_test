@@ -13,9 +13,22 @@ function sumar(a: number, b: number): number {
 const resultado = sumar(5, 3);
 console.log(`La suma de 5 y 3 es: ${resultado}`);*/
 
-function sum(a: number, b: string): number {
-  return a + b; // Error de tipo: no se puede sumar un número y una cadena
-}
+import * as express from 'express';
 
-const result = sum(5, "10");
-console.log(result);
+const app = express();
+
+app.get('/login', (req, res) => {
+  // Simulando una vulnerabilidad al almacenar la contraseña en texto plano
+  const password = req.query.password;
+  console.log(`Contraseña ingresada: ${password}`);
+
+  // Aquí debería haber lógica para comparar y verificar la contraseña (esto es solo para el ejemplo)
+  // Nunca deberías almacenar contraseñas en texto plano en un entorno de producción
+
+  res.send('¡Login exitoso!');
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor escuchando en el puerto ${PORT}`);
+});
