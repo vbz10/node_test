@@ -1,4 +1,4 @@
-/*import * as express from 'express';
+import * as express from 'express';
 const app = express();
 
 // Ejemplo 1: Uso de eval (no recomendado)
@@ -26,9 +26,9 @@ app.get('/path-concat-example', (req, res) => {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor escuchando en el puerto ${PORT}`);
-});*/
+});
 
-import * as express from 'express';
+/*import * as express from 'express';
 const app = express();
 
 // Ruta segura sin vulnerabilidades
@@ -39,5 +39,5 @@ app.get('/safe', (req, res) => {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor escuchando en el puerto ${PORT}`);
-});
+});*/
 
